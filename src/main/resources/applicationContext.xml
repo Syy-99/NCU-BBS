@@ -23,10 +23,10 @@
     <!--配置连接池-->
     <context:property-placeholder location="classpath:Config.properties"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/meeting?useUnicode=true&amp;characterEncoding=UTF-8"/>
-        <property name="user" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 
     <!--配置SqlSessionFactory工厂-->
