@@ -1,4 +1,6 @@
 package cn.edu.ncu.Entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 }
