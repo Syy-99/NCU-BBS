@@ -26,6 +26,6 @@ public interface PostDao {
     public void UpdatePost(Post post);
 
     /*保存帖子信息*/
-    @Insert("insert into post(pid,pname,type,content,rank,bonus,time,status) values (#{pid},#{pname},#{type},#{content},#{rank},#{bonus},#{time},#{status})")
+    @Insert("insert into post(pid,pname,type,content,rank,bonus,uid,uname,time,status) values (#{pid},#{pname},#{type},#{content},#{rank},#{bonus},#{uid},#{uname},#{time},#{status})")
     public void savePost(Post post);
 }

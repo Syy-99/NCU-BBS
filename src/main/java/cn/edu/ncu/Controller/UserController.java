@@ -1,6 +1,8 @@
 package cn.edu.ncu.Controller;
 
+import cn.edu.ncu.Entity.Admin;
 import cn.edu.ncu.Entity.User;
+import cn.edu.ncu.Service.AdminService;
 import cn.edu.ncu.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,12 +21,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AdminService adminService;
+
     @RequestMapping("/testUser")
     private void testUser(HttpServletRequest request, HttpServletResponse response ) throws Exception{
         List<User> list = userService.findAll();
+        List<Admin>list1 = adminService.findAll();
         HttpSession session = request.getSession();
         String uid = request.getParameter("uid");
         String upassword = request.getParameter("upassword");
+        for(Admin admin: list1){
+            if(admin.getAid().equals(uid)&&admin.getApassword().equals(upassword)){
+                response.sendRedirect("../admin/showUser");
+            }
+        }
         for(User user:list){
             if(user.getUid().equals(uid)&&user.getUpassword().equals(upassword)){
                 session.setAttribute("userId",uid);
@@ -42,16 +53,12 @@ public class UserController {
      */
     @RequestMapping("/getByUId")
     public String getByUId(HttpServletRequest request,HttpServletResponse response){
-        System.out.println("根据id查找");
-
         HttpSession session = request.getSession(false);
         String uid = (String) session.getAttribute("userId");
         User user = userService.getByUId(uid);
 
         session.setAttribute("PersonalData",user);
-
         return "personal";
-
     }
 
     /**
@@ -64,9 +71,7 @@ public class UserController {
      */
     @RequestMapping("/userEdit")
     public void userEdit(User user, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         userService.userEdit(user);
-
         response.sendRedirect(request.getContextPath()+"/user/getByUId");
 
     }
