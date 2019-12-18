@@ -27,4 +27,9 @@ public class PostServiceImpl implements PostService {
     public void UpdatePost(Post post) {
         postDao.UpdatePost(post);
     }
+
+    @Override
+    public void savePost(Post post) {
+        postDao.savePost(post);
+    }
 }

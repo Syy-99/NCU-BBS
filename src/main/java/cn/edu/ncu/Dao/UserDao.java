@@ -28,4 +28,19 @@ public interface UserDao {
     @Insert("insert into user(uid,uname,upassword,bonus,sex,email,address,age,introduction)" +
             "values(#{uid},#{uname},#{upassword},#{bonus},#{sex},#{email},#{address},#{age},#{introduction})")
     public void saveUser(User user);
+
+
+    /**
+     * 根据id查找用户
+     * @param uid 用户账号
+     * @return 账号为uid的User对象
+     */
+    @Select("select * from user where uid=${_parameter}")
+    public User getByUId(String uid);
+    /**
+     * 修改个人资料
+     * @param user id+需要修改的内容
+     */
+    @Update("update user set uname=#{uname},sex=#{sex},email=#{email},address=#{address},age=#{age},introduction=#{introduction}  where uid = #{uid} ")
+    public void userEdit( User user);
 }

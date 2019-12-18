@@ -12,4 +12,8 @@ public interface PostService {
 
     /*修改文章信息*/
     public void UpdatePost(Post post);
+
+    /*保存帖子信息*/
+    public void savePost(Post post);
+
 }

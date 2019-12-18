@@ -32,4 +32,13 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
+    @Override
+    public User getByUId(String uid) {
+        return userDao.getByUId(uid);
+    }
+
+    @Override
+    public void userEdit(User user) {
+        userDao.userEdit(user);
+    }
 }
