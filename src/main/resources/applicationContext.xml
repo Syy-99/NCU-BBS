@@ -36,7 +36,7 @@
 
     <!--配置UserDao接口所在包-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.ncu.edu.Dao"/>
+        <property name="basePackage" value="cn.edu.ncu.Dao"/>
     </bean>
 
     <!--配置Spring框架声明式事务管理-->
