@@ -9,22 +9,23 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//帖子接口
 @Repository
 public interface PostDao {
     /*查询所有帖子信息*/
-    @Select("select*from post")
-    public List<Post> findAll();
+    @Select("select *from post")
+    public List<Post>findAll();
 
-    /*保存帖子信息*/
-    @Insert("insert into post(pid,pname,type,content,rank,bonus,time,status) values (#{pid},#{pname},#{type},#{content},#{rank},#{bonus},#{time},#{status})")
-    public void savePost(Post post);
-
-    /*删除某个用户信息*/
+    /*删除帖子信息*/
     @Delete("delete from post where pid=#{pid}")
     public void deletePost(String pid);
 
-    /*修改某个用户信息*/
-    @Update("update post set pname=#{pname} where pid=#{pid}")
-    public void updatePost(Post post);
+    /*修改文章信息*/
+    @Update("update post set pname=#{pname},type=#{type}," +
+            "content=#{content},rank=#{rank},bonus=#{bonus},time=#{time}," +
+            "uname=#{uname},status=#{status} where pid=#{pid}")
+    public void UpdatePost(Post post);
+
+    /*保存帖子信息*/
+    @Insert("insert into post(pid,pname,type,content,rank,bonus,uid,uname,time,status) values (#{pid},#{pname},#{type},#{content},#{rank},#{bonus},#{uid},#{uname},#{time},#{status})")
+    public void savePost(Post post);
 }

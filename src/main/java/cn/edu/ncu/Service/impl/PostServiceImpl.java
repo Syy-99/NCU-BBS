@@ -7,31 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-/*
- * 业务层实现*/
-@Service("UserService")
+@Service
 public class PostServiceImpl implements PostService {
+
     @Autowired
-    private PostDao poseDao;
+    private PostDao postDao;
 
     @Override
     public List<Post> findAll() {
-        return poseDao.findAll();
-    }
-
-    @Override
-    public void savePost(Post post) {
-        poseDao.savePost(post);
+        return postDao.findAll();
     }
 
     @Override
     public void deletePost(String pid) {
-        poseDao.deletePost(pid);
+        postDao.deletePost(pid);
     }
 
     @Override
-    public void updatePost(Post post) {
-        poseDao.updatePost(post);
+    public void UpdatePost(Post post) {
+        postDao.UpdatePost(post);
+    }
+
+    @Override
+    public void savePost(Post post) {
+        postDao.savePost(post);
     }
 }

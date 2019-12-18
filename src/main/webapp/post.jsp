@@ -11,10 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<%
 
-//    获得user id name
-%>
     <form action="post/savePost" method="post">
         帖子标题：<input type="text" name="pname" required><br>
         发布版块：<select name="type" required style="width:100px;">

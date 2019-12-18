@@ -2,7 +2,6 @@ package cn.edu.ncu.Entity;
 
 import java.io.Serializable;
 
-//帖子对象
 public class Post implements Serializable {
     private String pid;//帖子id
     private String pname;//帖子标题
