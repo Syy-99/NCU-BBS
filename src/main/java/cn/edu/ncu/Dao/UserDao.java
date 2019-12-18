@@ -20,7 +20,7 @@ public interface UserDao {
     public void deleteUser(String uid);
 
     /*修改用户信息*/
-    @Update("update user set uid=#{uid},uname=#{uname},upassword=#{upassword}" +
+    @Update("update user set uid=#{uid},uname=#{uname},upassword=#{upassword}," +
             "bonus=#{bonus},sex=#{sex},email=#{email},address=#{address},age=#{age},introduction=#{introduction} ")
     public void updateUser(User user);
 
