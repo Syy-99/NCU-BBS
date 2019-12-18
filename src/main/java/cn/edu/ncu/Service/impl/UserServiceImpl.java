@@ -12,10 +12,17 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
+
+
 
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public User getByUId(String uid) {
+        return userDao.getByUId(uid);
+    }
+
+    @Override
+    public void userEdit(User user) {
+        userDao.userEdit(user);
     }
 }
