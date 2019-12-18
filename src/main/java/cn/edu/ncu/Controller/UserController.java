@@ -43,6 +43,22 @@ public class UserController {
             }
         }
     }
+
+    /*注册*/
+    @RequestMapping("/testRegister")
+    public String testRegister(HttpServletRequest request, HttpServletResponse response,User user)throws Exception{
+        List<User>list = userService.findAll();
+        String uid = request.getParameter("uid");
+        for(User users:list){
+            if(users.getUid().equals(uid))
+                return "error";
+        }
+        user.setBonus("50");
+        user.setUname("小白");
+        userService.saveUser(user);
+        response.sendRedirect("../main.jsp");
+        return "error";
+    }
     /**
      *  *查找个人信息
      *
