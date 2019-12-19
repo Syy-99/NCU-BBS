@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -28,6 +29,9 @@ public class UserController {
     private void testUser(HttpServletRequest request, HttpServletResponse response ) throws Exception{
         List<User> list = userService.findAll();
         List<Admin>list1 = adminService.findAll();
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Content-type", "text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         String uid = request.getParameter("uid");
         String upassword = request.getParameter("upassword");
@@ -39,25 +43,35 @@ public class UserController {
         for(User user:list){
             if(user.getUid().equals(uid)&&user.getUpassword().equals(upassword)){
                 session.setAttribute("userId",uid);
-                response.sendRedirect("../main.jsp");
+                out.print("<script>alert('登录成功，欢迎来到BBS论坛');window.location.href='../main.jsp'</script>");
+                out.flush();
             }
         }
+        out.print("<script>alert('登录失败，请重新登录');window.location.href='../login.jsp'</script>");
+        out.flush();
     }
 
     /*注册*/
     @RequestMapping("/testRegister")
-    public String testRegister(HttpServletRequest request, HttpServletResponse response,User user)throws Exception{
+    public void testRegister(HttpServletRequest request, HttpServletResponse response,User user)throws Exception{
         List<User>list = userService.findAll();
         String uid = request.getParameter("uid");
+        HttpSession session = request.getSession();
+        session.setAttribute("userId",uid);
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Content-type", "text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         for(User users:list){
-            if(users.getUid().equals(uid))
-                return "error";
+            if(users.getUid().equals(uid)){
+                out.print("<script>alert('账号已存在，请重新注册');window.location.href='../register.jsp'</script>");
+                out.flush();
+            }
         }
         user.setBonus("50");
         user.setUname("小白");
         userService.saveUser(user);
-        response.sendRedirect("../main.jsp");
-        return "error";
+        out.print("<script>alert('注册成功，欢迎来到BBS论坛');window.location.href='../main.jsp'</script>");
+        out.flush();
     }
     /**
      *  *查找个人信息

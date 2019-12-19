@@ -32,9 +32,7 @@
                             <span class="us_uer"></span>
                             <input name="upassword" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
                         </div>
-                        <div style="text-align:center;letter-spacing:75px;">
-                            <input class="act-but submit" type="submit" onclick="javascript:this.form.action='../user/testRegister';" style="color: #FFFFFF;width:120px" value="注册">
-                        </div>
+                        <input class="act-but submit" type="submit" onclick="javascript:this.form.action='../user/testRegister';" style="color: #FFFFFF;width:330px" value="注册">
                     </form>
                 </div>
             </div>
