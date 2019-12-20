@@ -22,10 +22,10 @@ public interface PostDao {
     /*修改文章信息*/
     @Update("update post set pname=#{pname},type=#{type}," +
             "content=#{content},rank=#{rank},bonus=#{bonus},time=#{time}," +
-            "uname=#{uname},status=#{status} where pid=#{pid}")
+            "uname=#{uname},status=#{status},pimage=#{pimage} where pid=#{pid}")
     public void UpdatePost(Post post);
 
     /*保存帖子信息*/
-    @Insert("insert into post(pid,pname,type,content,rank,bonus,uid,uname,time,status) values (#{pid},#{pname},#{type},#{content},#{rank},#{bonus},#{uid},#{uname},#{time},#{status})")
+    @Insert("insert into post(pid,pname,type,content,rank,bonus,uid,uname,time,status,pimage) values (#{pid},#{pname},#{type},#{content},#{rank},#{bonus},#{uid},#{uname},#{time},#{status},#{pimage})")
     public void savePost(Post post);
 }

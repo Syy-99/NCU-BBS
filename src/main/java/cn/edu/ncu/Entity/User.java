@@ -12,6 +12,7 @@ public class User implements Serializable {
     private String address;//地址
     private String age;//年龄
     private String introduction;//个性签名
+    private String uimage;//用户图片
 
     public String getUid() {
         return uid;
@@ -83,5 +84,13 @@ public class User implements Serializable {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getUimage() {
+        return uimage;
+    }
+
+    public void setUimage(String uimage) {
+        this.uimage = uimage;
     }
 }

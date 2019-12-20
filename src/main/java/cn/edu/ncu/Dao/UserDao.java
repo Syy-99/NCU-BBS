@@ -20,13 +20,13 @@ public interface UserDao {
     public void deleteUser(String uid);
 
     /*修改用户信息*/
-    @Update("update user set uid=#{uid},uname=#{uname},upassword=#{upassword}," +
-            "bonus=#{bonus},sex=#{sex},email=#{email},address=#{address},age=#{age},introduction=#{introduction} ")
+    @Update("update user set uname=#{uname},upassword=#{upassword}," +
+            "bonus=#{bonus},sex=#{sex},email=#{email},address=#{address},age=#{age},introduction=#{introduction},uimage=#{uimage} where uid=#{uid}")
     public void updateUser(User user);
 
     /*保存用户信息*/
-    @Insert("insert into user(uid,uname,upassword,bonus,sex,email,address,age,introduction)" +
-            "values(#{uid},#{uname},#{upassword},#{bonus},#{sex},#{email},#{address},#{age},#{introduction})")
+    @Insert("insert into user(uid,uname,upassword,bonus,sex,email,address,age,introduction,uimage)" +
+            "values(#{uid},#{uname},#{upassword},#{bonus},#{sex},#{email},#{address},#{age},#{introduction},#{uimage})")
     public void saveUser(User user);
 
 
@@ -41,6 +41,6 @@ public interface UserDao {
      * 修改个人资料
      * @param user id+需要修改的内容
      */
-    @Update("update user set uname=#{uname},sex=#{sex},email=#{email},address=#{address},age=#{age},introduction=#{introduction}  where uid = #{uid} ")
+    @Update("update user set uname=#{uname},sex=#{sex},email=#{email},address=#{address},age=#{age},introduction=#{introduction},uimage=#{uimage}  where uid = #{uid} ")
     public void userEdit( User user);
 }

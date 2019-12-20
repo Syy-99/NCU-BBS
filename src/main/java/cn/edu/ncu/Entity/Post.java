@@ -13,6 +13,7 @@ public class Post implements Serializable {
     private String uid;//发帖人账号
     private String uname;//发帖人昵称
     private String status;//审核状态
+    private String pimage;//帖子图片
 
     public String getPid() {
         return pid;
@@ -92,5 +93,13 @@ public class Post implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPimage() {
+        return pimage;
+    }
+
+    public void setPimage(String pimage) {
+        this.pimage = pimage;
     }
 }
