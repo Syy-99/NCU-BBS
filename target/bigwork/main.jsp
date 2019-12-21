@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+<<<<<<< HEAD
     <script src="js/jquery.min.js"></script>
     <script src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -47,5 +48,11 @@
 </div>
 <script src="js/main.js"></script>
 
+=======
+</head>
+<body>
+    <input type="button" onclick="document.location.href='./post.jsp'" value="发帖">
+    <input type="button" value="个人中心" onclick="document.location.href='../user/getByUId'">
+>>>>>>> d6509fca00d16156a3ea3365b3311fcfb36e5023
 </body>
 </html>

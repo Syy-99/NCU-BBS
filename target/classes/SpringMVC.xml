@@ -20,6 +20,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         <property name="prefix" value="/WEB-INF/view/"/><!--配置跳转文件所在目录-->
         <property name="suffix" value=".jsp"/><!--配置跳转文件的后缀名-->
     </bean>
+<<<<<<< HEAD
 
     <!--配置multipartResolver文件上传解析器-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -29,6 +30,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
     
+=======
+>>>>>>> d6509fca00d16156a3ea3365b3311fcfb36e5023
     <!--开启SpringMVC框架的注解支持-->
     <mvc:annotation-driven/>
     <!--静态资源映射-->
@@ -36,5 +39,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
     <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+<<<<<<< HEAD
     <mvc:resources location="/WEB-INF/assets/" mapping="/assets/**"/>
+=======
+>>>>>>> d6509fca00d16156a3ea3365b3311fcfb36e5023
 </beans>

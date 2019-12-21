@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+<<<<<<< HEAD
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>登录界面</title>
@@ -45,5 +46,15 @@
     <script src="js/EasePack.min.js"></script>
     <script src="js/rAF.js"></script>
     <script src="js/demo-1.js"></script>
+=======
+    <title>登录界面</title>
+</head>
+<body>
+    <form method="post" action="user/testUser">
+        账号：<input type="text" name="uid"><br>
+        密码：<input type="password" name="upassword"><br>
+        <input type="submit" value="登录">
+    </form>
+>>>>>>> d6509fca00d16156a3ea3365b3311fcfb36e5023
 </body>
 </html>
