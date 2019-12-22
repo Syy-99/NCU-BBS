@@ -8,58 +8,67 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>后台用户中心</title>
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="css/style2.css" />
 </head>
 <body>
-    <button onclick="check()">aaa</button>
-    <div id="post_show_all"></div>
-<script>
-      function check() {
-          $.ajax({
-              url: "/post/showPost",        //后台url
-              data: {                          //数据
-              },
-              type: "post",                   //类型，POST或者GET
-              dataType: "json",              //数据返回类型，可以是xml、json等
-
-              success: function (data) {
-
-                  var a =data;
-                  var b="";
-                  for(var i=a.length-1;i>=0;i--){
-                      console.log(a[i].pid);
-                      console.log(a[i].pname);
-                      console.log(a[i].type);
-                      console.log(a[i].content);
-                      console.log(a[i].rank);
-                      console.log(a[i].bonus);
-                      console.log(a[i].time);
-                      console.log(a[i].uname);
-
-                      var post_show_all = "";
-                      post_show_all =
-                          '<div class="form-group">'+
-                          /*标题*/
-                          '<div>'+a[i].pname+'</div>'+
-                          /*发帖时间*/
-                          '<div>'+a[i].time+'</div>'+
-                          /*内容*/
-                          '<div>'+a[i].content+'</div>'+
-                          /*名字/板块*/
-                          '<div>'+a[i].uname+'/ '+a[i].type+'</div>'+
-                          ' </div>';
-
-                      b+=post_show_all;
-                  }
-                  $("#post_show_all").html(b);
-              },
-              error: function () {
-                  alert("error!");
-              }
-
-          });
-        }
-</script>
+<div class="header">
+    <div class="bar">
+        <div class="w1200">
+            <span class="l">BBS论坛<font>用户中心</font></span>
+            <span class="r"><a href="#"><i class="icon iconfont icon-dianyuan"></i>退出</a></span>
+        </div>
+    </div>
+    <div class="user-info">
+        <div class="w1200">
+            <div class="user-headface">
+                <img src="images/1.jpg" style="width: 100px;height: 100px"/>
+            </div>
+            <div class="user-account">
+                <p class="tip">用户：tomandjerry</p>
+            </div>
+            <div class="user-modify">
+                <a href="#">修改资料></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main w1200">
+    <div class="left">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="iaoicon iconfont icon-fangzidichan"></i>
+                    个人资料
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon iconfont icon-wenda"></i>
+                    修改密码
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon iconfont icon-geren"></i>
+                    我发布的帖子
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="tap">
+            <span>系统消息</span>
+        </div>
+        <div class="container">
+            <div class="no-doc">
+                <img src="images/no_doc.jpg"/>
+                <p>您还没有消息哦~</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -3,7 +3,10 @@ package cn.edu.ncu.Controller;
 import cn.edu.ncu.Entity.Admin;
 import cn.edu.ncu.Entity.User;
 import cn.edu.ncu.Service.AdminService;
+import cn.edu.ncu.Service.CommitService;
+import cn.edu.ncu.Service.PostService;
 import cn.edu.ncu.Service.UserService;
+import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,12 @@ public class UserController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private PostService postService;
+
+    @Autowired
+    private CommitService commitService;
 
     @RequestMapping("/testUser")
     private void testUser(HttpServletRequest request, HttpServletResponse response ) throws Exception{
@@ -86,7 +95,6 @@ public class UserController {
         HttpSession session = request.getSession(false);
         String uid = (String) session.getAttribute("userId");
         User user = userService.getByUId(uid);
-
         session.setAttribute("PersonalData",user);
         return "personal";
     }
@@ -102,6 +110,8 @@ public class UserController {
     @RequestMapping("/userEdit")
     public void userEdit(User user, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
         userService.userEdit(user);
+        postService.updatePostUname(user);
+        commitService.updateCommitDao(user);
         response.sendRedirect(request.getContextPath()+"/user/getByUId");
 
     }
@@ -114,4 +124,31 @@ public class UserController {
     public String jumpToUserEdit(){
         return "personalEdit";
     }
+
+
+    /**
+     * 根据uid返回json数组
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    @RequestMapping("/editByUId")
+    public void editByUId(HttpServletRequest request,HttpServletResponse response) throws Exception{
+        HttpSession session = request.getSession(false);
+        String uid = (String) session.getAttribute("userId");
+        User user = userService.getByUId(uid);
+        JSONArray ja = JSONArray.fromObject(user);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().println(ja);
+    }
+
+    /*个人中心删除帖子*/
+    @RequestMapping("/deleteByPId")
+    public void deleteByPId(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        String pid = request.getParameter("pid");
+        postService.deletePost(pid);
+        response.sendRedirect("../user/getByUId");
+    }
 }
+
+

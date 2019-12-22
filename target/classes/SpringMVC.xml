@@ -36,4 +36,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
     <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/assets/" mapping="/assets/**"/>
+    <mvc:resources location="/WEB-INF/font/" mapping="/font/**"/>
 </beans>

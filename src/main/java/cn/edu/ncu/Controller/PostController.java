@@ -5,6 +5,7 @@ import cn.edu.ncu.Entity.User;
 import cn.edu.ncu.Service.PostService;
 import cn.edu.ncu.Service.UserService;
 import cn.edu.ncu.Util.UploadImageUtil;
+import javafx.geometry.Pos;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,20 +56,34 @@ public class PostController {
 
     @RequestMapping("/showPost")
     public void showPost(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        List<User> posts = userService.findAll();
-        System.out.println(123);
+        List<Post> posts = postService.findAll();
         JSONArray ja = JSONArray.fromObject(posts);
-        System.out.println(321);
-        System.out.println(ja.toString());
-
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().println(ja);
     }
-    @RequestMapping("/test")
-    public void test(){
-        List<Post>list = postService.findAll();
-        for(Post post:list){
-            System.out.println(post.getUid());
-        }
+
+    @RequestMapping("/searchPost")
+    public void searchPost(HttpServletRequest request, HttpServletResponse response,String s) throws Exception{
+        s="%"+s+"%";
+        List<Post> posts = postService.findByPname(s);
+        JSONArray ja = JSONArray.fromObject(posts);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().println(ja);
+    }
+
+    /**
+     *根据uid查找帖子
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    @RequestMapping("/getByUId")
+    public void getByUIdPost(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        HttpSession session = request.getSession();
+        String uid  = (String) session.getAttribute("userId");
+        List<Post> list = postService.getByUId(uid);
+        JSONArray ja = JSONArray.fromObject(list);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().println(ja);
     }
 }

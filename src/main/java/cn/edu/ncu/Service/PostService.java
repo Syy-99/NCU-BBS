@@ -1,6 +1,7 @@
 package cn.edu.ncu.Service;
 
 import cn.edu.ncu.Entity.Post;
+import cn.edu.ncu.Entity.User;
 
 import java.util.List;
 public interface PostService {
@@ -16,4 +17,16 @@ public interface PostService {
     /*保存帖子信息*/
     public void savePost(Post post);
 
+    /*模糊匹配*/
+    public List<Post>findByPname(String pname);
+
+    /**
+     * 根据uid查找帖子
+     * @param uid
+     * @return
+     */
+    public List<Post> getByUId(String uid);
+
+    /*如果修改了昵称，则修改post中的uname*/
+    public void updatePostUname(User user);
 }

@@ -1,17 +1,17 @@
 /*模态框*/
-.modal {
+.modal1 {
     display: none; /* 默认隐藏 */
     position: fixed; /* 根据浏览器定位 */
     z-index: 1; /* 放在顶部 */
-    left: 0;
+    left: 0%;
     top: 0;
-    width: 80%; /* 全宽 */
-    height: 80%; /* 全高 */
+    width: 50%; /* 全宽 */
+    height: 100%; /* 全高 */
     /*overflow: auto; !* 允许滚动 *!*/
     background-color: rgba(0,0,0,0.0); /* 背景色 */
 }
 /*模态框内容*/
-.modal-content {
+.modal1-content {
     display: flex; /*采用flexbox布局*/
     flex-direction: column; /*垂直排列*/
     position: relative;
@@ -27,12 +27,11 @@
     to {top: 0; opacity: 1}
 }
 /*模态框头部*/
-.modal-header {
+.modal1-header {
     display: flex; /*采用flexbox布局*/
     flex-direction: row; /*水平布局*/
     align-items: center; /*内容垂直居中*/
     justify-content: space-between;
-    text-align: center;
 }
 /*关闭X 样式*/
 .close {
